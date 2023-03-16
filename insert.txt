@@ -1,0 +1,9 @@
+INSERT INTO block (name, model, serial_number) VALUES ('block', 12, 16273);
+INSERT INTO "error" (description) VALUES ('Какая-то неисправность, которая привела к гибели Фрэнка');
+INSERT INTO scheme (block_id, error_id, name) VALUES (1, 1, 'какая-та схема');
+INSERT INTO person (name, surname) VALUES ('Frank', 'Poole');
+INSERT INTO person_error(person_id, error_id, start_time, end_time) VALUES (1, 1, '10:00:00', '11:00:00');
+INSERT INTO emotion (description) VALUES('На мгновение в поток сознания врезались воспоминания');
+INSERT INTO person_emotion (person_id, emotion_id) VALUES(1, 1);
+INSERT INTO "position"(name) VALUES('director');
+INSERT INTO person_position (person_id, position_id) VALUES (1, 1);
