@@ -1,0 +1,47 @@
+CREATE TABLE block(
+	id serial PRIMARY KEY,
+	name VARCHAR(20),
+	model INTEGER,
+	serial_number INTEGER NOT NULL
+);
+CREATE TABLE "error"(
+	id serial PRIMARY KEY,
+	description TEXT NOT NULL	
+);
+CREATE TABLE scheme(
+	id serial PRIMARY KEY,
+	block_id INTEGER NOT NULL REFERENCES block(id),
+	error_id INTEGER NOT NULL REFERENCES "error"(id),
+	name VARCHAR(20)
+);
+CREATE TABLE person(
+	id serial PRIMARY KEY,
+	name VARCHAR(20) NOT NULL,
+	surname VARCHAR(20)
+);
+
+CREATE TABLE person_error(
+	person_id INTEGER NOT NULL REFERENCES person(id),
+	error_id INTEGER NOT NULL REFERENCES "error"(id),
+	start_time TIME,
+	end_time TIME
+);
+CREATE TABLE emotion(
+	id serial PRIMARY KEY,
+	description TEXT NOT NULL
+);
+CREATE TABLE person_emotion(
+	emotion_id INTEGER NOT NULL REFERENCES emotion(id),
+	person_id INTEGER NOT NULL REFERENCES person(id)
+);
+
+
+CREATE TABLE "position"(
+	id serial PRIMARY KEY,
+	name varchar(20) NOT NULL
+);
+
+CREATE TABLE person_position(
+	person_id INTEGER NOT NULL REFERENCES person(id),
+	position_id INTEGER NOT NULL REFERENCES "position"(id)
+);

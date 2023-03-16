@@ -1,0 +1,9 @@
+SELECT name
+FROM(
+SELECT t1.person_id, COUNT(*) AS cnt, t2.name
+FROM person_error t1
+JOIN person t2 ON t1.person_id = t2.id
+WHERE t1.start_time IS NOT NULL AND t1.end_time IS NOT NULL
+GROUP BY t1.person_id, t2.name
+HAVING COUNT(*) >= 2
+)AS subquery;
